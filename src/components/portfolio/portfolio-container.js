@@ -10,7 +10,8 @@ export default class PortfolioContainer extends Component {
     this.state = {
       pagetitle: "Welcome to my portfolio",
       isLoading: false,
-      data: []
+      data: [],
+      activeFilter: null
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -18,27 +19,45 @@ export default class PortfolioContainer extends Component {
 
   handleFilter(filter) {
     if (filter === "CLEAR_FILTERS") {
+      this.setState({
+        activeFilter: null
+      });
+
       this.getPortfolioItems();
     } else {
+      this.setState({
+        activeFilter: filter
+      });
+
       this.getPortfolioItems(filter);
     }
+  }
+
+  sortByPosition(items) {
+    return [...items].sort((a, b) => {
+      const posA = Number(a.position) || 0;
+      const posB = Number(b.position) || 0;
+      return posA - posB;
+    });
   }
 
   getPortfolioItems(filter = null) {
     axios
       .get("https://saetllitefolvoe.devcamp.space/portfolio/portfolio_items")
       .then(response => {
+        let items = response.data.portfolio_items;
+
         if (filter) {
-          this.setState({
-            data: response.data.portfolio_items.filter(item => {
-              return item.category === filter;
-            })
-          });
-        } else {
-          this.setState({
-            data: response.data.portfolio_items
+          items = items.filter(item => {
+            return item.category === filter;
           });
         }
+
+        items = this.sortByPosition(items);
+
+        this.setState({
+          data: items
+        });
       })
       .catch(error => {
         console.log(error);
@@ -51,7 +70,16 @@ export default class PortfolioContainer extends Component {
     });
   }
   componentDidMount() {
-    this.getPortfolioItems();
+    const filterFromNavigation =
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.filter;
+
+    if (filterFromNavigation) {
+      this.handleFilter(filterFromNavigation);
+    } else {
+      this.getPortfolioItems();
+    }
   }
 
   render() {
@@ -62,20 +90,39 @@ export default class PortfolioContainer extends Component {
     return (
       <div className="homepage-wrapper">
         <div className="filter-links">
-          <button className="btn" onClick={() => this.handleFilter("Diseño")}>
-            Diseño
-          </button>
-          <button className="btn" onClick={() => this.handleFilter("Sonido")}>
-            Sonido
-          </button>
           <button
-            className="btn"
-            onClick={() => this.handleFilter("Proyectos")}
+            className={
+              this.state.activeFilter === "Design"
+                ? "btn-filter filter-active"
+                : "btn-filter"
+            }
+            onClick={() => this.handleFilter("Design")}
           >
-            Proyectos
+            Design
           </button>
           <button
-            className="btn"
+            className={
+              this.state.activeFilter === "Sound"
+                ? "btn-filter filter-active"
+                : "btn-filter"
+            }
+            onClick={() => this.handleFilter("Sound")}
+          >
+            Sound
+          </button>
+          <button
+            className={
+              this.state.activeFilter === "Projects"
+                ? "btn-filter filter-active"
+                : "btn-filter"
+            }
+            onClick={() => this.handleFilter("Projects")}
+          >
+            Projects
+          </button>
+          <button
+            className="btn-filter"
+            activeClassName="filter-active"
             onClick={() => this.handleFilter("CLEAR_FILTERS")}
           >
             All

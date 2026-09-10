@@ -5,29 +5,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function () {
   return (
     <div className="content-page-wrapper">
-      <div
-        className="left-column"
-        style={{
-          background: "url(" + contactPagePicture + ") no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      />
-
-      <div className="right-column">
+      <div className="content-column">
         <div className="contact-bullet-points">
-          <div className="bullet-point-group">
-            <div className="icon">
-              <FontAwesomeIcon icon="phone" />
-            </div>
-            <div className="text">555-111-44321</div>
-          </div>
-
           <div className="bullet-point-group">
             <div className="icon">
               <FontAwesomeIcon icon="envelope" />
             </div>
             <div className="text">milo.tonon@gmail.com</div>
+          </div>
+
+          <div className="bullet-point-group">
+            <div className="icon">
+              <FontAwesomeIcon
+                className="instagram"
+                icon={["fab", "instagram"]}
+              />
+            </div>
+            <div className="text">@camilo.tbf</div>
           </div>
 
           <div className="bullet-point-group">

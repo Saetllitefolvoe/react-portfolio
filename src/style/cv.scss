@@ -1,0 +1,60 @@
+.curri-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 48px;
+
+  padding-left: 55px;
+  padding-right: 55px;
+
+  .title {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 8px;
+  }
+
+  .subtitle {
+    font-weight: 600;
+    padding-bottom: 3px;
+    padding-top: 4px;
+  }
+
+  .entry-title {
+    font-weight: 600;
+  }
+
+  .curri-item {
+    font-size: 0.9em;
+    padding-bottom: 12px;
+  }
+}
+
+// ---- MÓVIL ----
+@media (max-width: 768px) {
+  .curri-content-wrapper {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .curri-item {
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      padding-top: 0;
+    }
+
+    .right-side {
+      .curri-item {
+        br {
+          content: "";
+          display: block;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

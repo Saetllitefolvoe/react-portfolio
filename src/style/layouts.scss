@@ -4,12 +4,13 @@
   grid-template-columns: 1fr 1fr;
   height: calc(100vh - 84px);
 
-  .right-column {
+  .content-column {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding: 100px;
+    justify-content: flex-start;
+
+    padding-left: 55px;
+    padding-top: 55px;
 
     .contact-bullet-points {
       display: grid;
@@ -19,17 +20,52 @@
       .bullet-point-group {
         display: flex;
         align-items: center;
+
         .icon {
-          font-size: 2em;
-          color: $teal;
+          font-size: 1em;
+          color: black;
+
+          .instagram {
+            transform: scale(1.35);
+          }
         }
 
         .text {
-          font-size: 1.5em;
-
+          font-size: 1em;
           margin-left: 21px;
         }
       }
+    }
+  }
+
+  .right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+    margin-bottom: 100px;
+    line-height: 1.6;
+  }
+}
+
+// ---- MÓVIL ----
+@media (max-width: 768px) {
+  .content-page-wrapper {
+    grid-template-columns: 1fr;
+    height: auto;
+
+    .left-column {
+      order: 2;
+      height: 45vh;
+      width: 100%;
+    }
+
+    .right-column {
+      order: 1;
+      padding: 40px 24px;
+      margin-bottom: 40px;
+      line-height: 1.6;
     }
   }
 }

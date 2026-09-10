@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class PortfolioDetail extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class PortfolioDetail extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getPortfolioItem();
   }
 
@@ -31,41 +32,56 @@ export default class PortfolioDetail extends Component {
   }
 
   render() {
-    const {
-      banner_image_url,
-      category,
-      description,
-      logo_url,
-      name,
-      thumb_image_url,
-      url
-    } = this.state.portfolioItem;
-
-    const bannerStyles = {
-      backgroundImage: "url(" + banner_image_url + ")",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-reapeat",
-      backgroundPosition: "center center"
-    };
-
-    const logoStyles = {
-      width: "200px"
-    };
+    const { banner_image_url, category, description, name, url } =
+      this.state.portfolioItem;
 
     return (
       <div className="portfolio-detail-wrapper">
-        <div className="banner" style={bannerStyles}>
-          <img src={logo_url} style={logoStyles} />
+        <div className="detail-filter-links">
+          {category && (
+            <Link
+              to={{
+                pathname: "/",
+                state: { filter: category }
+              }}
+              className="btn-filter"
+            >
+              {category}
+            </Link>
+          )}
+
+          <Link
+            to={{
+              pathname: "/",
+              state: { filter: "CLEAR_FILTERS" }
+            }}
+            className="btn-filter"
+          >
+            All
+          </Link>
         </div>
 
-        <div className="portfolio-detail-description-wrapper">
-          <div className="description">{description}</div>
+        <div className="detail-title">
+          <div className="name">{name}</div>
         </div>
 
-        <div className="bottom-content-wrapper">
-          <a href={url} className="psite-link" target="_blank">
-            Visit {name}
-          </a>
+        <div className="content-row">
+          <div className="text-column">
+            <div className="description">{description}</div>
+
+            <a
+              href={url}
+              className="site-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              More information
+            </a>
+          </div>
+
+          <div className="banner">
+            <img src={banner_image_url} alt={name} />
+          </div>
         </div>
       </div>
     );
