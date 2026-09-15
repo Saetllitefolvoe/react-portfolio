@@ -8,11 +8,11 @@ export default class Cv extends Component {
           <div className="curri-item">
             <div className="title">Education</div>
             <div className="subtitle">
-              Bottega University, Developers from Euskadi
+              Coding Fundamentals & Fullstack Development
             </div>
-            Coding Fundamentals & Fullstack. 2025-2026
-            <div className="subtitle">University of Basque Country UPV EHU</div>
-            Fine Arts Degree. 2018-2022
+            Bottega University. 2025-2026
+            <div className="subtitle">Fine Arts Degree</div>
+            University of Basque Country UPV EHU. 2018-2022
           </div>
 
           <div className="curri-item">

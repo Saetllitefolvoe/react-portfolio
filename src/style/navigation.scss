@@ -46,3 +46,37 @@
     }
   }
 }
+
+// ---- MÓVIL ----
+@media (max-width: 480px) {
+  .nav-wrapper {
+    padding: 16px;
+    flex-wrap: wrap;
+    row-gap: 6px;
+
+    .left-side {
+      order: 2;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .right-side {
+      order: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .nav-link-wrapper {
+      font-size: 0.75rem;
+      margin-right: 12px;
+      height: auto;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

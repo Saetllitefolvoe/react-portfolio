@@ -59,7 +59,7 @@
     color: $grey;
     transition: 0.5s ease-in-out;
     font-size: 1em;
-    margin-top: 300px;
+    margin-top: 15px;
 
     &:hover {
       color: black;
@@ -74,6 +74,25 @@
     padding-right: 20px;
     margin-top: 0;
 
+    .detail-filter-links {
+      margin-top: -12px;
+      gap: 0;
+    }
+
+    .btn-filter {
+      margin-top: 0;
+      height: auto;
+      padding: 3px 5px;
+      font-size: 0.75rem;
+    }
+
+    .detail-title {
+      .name {
+        font-size: 1.3em;
+        margin-bottom: 16px;
+      }
+    }
+
     .content-row {
       flex-direction: column;
       gap: 24px;
@@ -81,11 +100,16 @@
 
     .text-column {
       max-width: 100%;
+
+      .description {
+        font-size: 0.9em;
+      }
     }
 
     .banner {
       width: 100%;
       margin-top: 0;
+      padding-bottom: 20px;
 
       img {
         max-height: 400px;
@@ -93,7 +117,8 @@
     }
 
     .site-link {
-      margin-top: 24px;
+      margin-top: -12px;
+      font-size: 0.9em;
     }
   }
 }
