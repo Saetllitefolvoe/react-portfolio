@@ -17,10 +17,8 @@ export default class Cv extends Component {
 
           <div className="curri-item">
             <div className="title">Work Experience</div>
-            <div className="subtitle">Exam Invigilator</div>
-            British Council, Bilbao. 2026-present
-            <div className="subtitle">English Teacher</div>
-            Kids & Us English Academy, Bilbao. 2022-present
+            <div className="subtitle">Freelance Designer</div>
+            Image & sound design. 2021-present
             <div className="subtitle">Art Assistant</div>
             Assistant of artist Ivan Gomez, Jun-Sep 2024
             <div className="subtitle">Art Assistant</div>
